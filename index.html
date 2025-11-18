@@ -38,3 +38,44 @@ new Chart(ctx, {
     }
 });
 </script></div>
+<style>
+.controls { margin-top:12px; display:flex; gap:8px; align-items:center; font-family:Arial,Helvetica,sans-serif; }
+.btn { padding:6px 10px; background:#4e79a7; color:#fff; border:0; border-radius:4px; cursor:pointer; }
+.btn.secondary { background:#e15759; }
+.info { font-size:0.9rem; color:#333; margin-left:6px; }
+</style>
+
+<div class="controls" aria-label="차트 제어">
+    <button id="downloadBtn" class="btn" type="button">차트 다운로드 (PNG)</button>
+    <button id="destroyBtn" class="btn secondary" type="button">차트 해제</button>
+    <span id="status" class="info">상태: 활성</span>
+</div>
+
+<script>
+(function(){
+    const canvas = document.getElementById('ktChart');
+    function getChart() { return Chart.getChart(canvas) || null; }
+
+    document.getElementById('downloadBtn').addEventListener('click', function(){
+        const chart = getChart();
+        if(!chart){ alert('차트가 없습니다.'); return; }
+        const url = canvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'ktChart.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    });
+
+    document.getElementById('destroyBtn').addEventListener('click', function(){
+        const chart = getChart();
+        if(!chart){
+            document.getElementById('status').textContent = '상태: 이미 해제됨';
+            return;
+        }
+        chart.destroy();
+        document.getElementById('status').textContent = '상태: 해제됨';
+    });
+})();
+</script>
