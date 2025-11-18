@@ -1,9 +1,14 @@
 <h2> 헬름 실슴용 엔진엑스 차트 </h2>
+#원격저장소 로컬에 등록하기
 
 - 이건 안내다.
 <div>
     <p>간단한 예제 차트(엔진엑스 레이블)</p>
     <canvas id="ktChart" width="600" height="300"></canvas>
+<p> helm repo add myrepo https://hodae1212.github.io/ktChart/ </p>
+#로컬 저장소에 있는 레포의 차트를 기반으로 release 배포하기
+<p> helm install " 릴리즈 이름 (myweb1)" myrepo/nginx-chart </p>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
