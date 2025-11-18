@@ -1,0 +1,35 @@
+<h2> 헬름 실슴용 엔진엑스 차트 </h2>
+
+- 이건 안내다.
+<div>
+    <p>간단한 예제 차트(엔진엑스 레이블)</p>
+    <canvas id="ktChart" width="600" height="300"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('ktChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['alpha', 'beta', 'gamma', 'delta'],
+        datasets: [{
+            label: '헬름 실습용 데이터',
+            data: [12, 19, 3, 5],
+            backgroundColor: ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2'],
+            borderColor: ['#2b5a8a', '#b35f18', '#9b2b35', '#3d8b86'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { position: 'top' },
+            title: { display: false }
+        },
+        scales: {
+            y: { beginAtZero: true }
+        }
+    }
+});
+</script></div>
